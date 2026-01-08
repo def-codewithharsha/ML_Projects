@@ -17,7 +17,7 @@ class DecisionTree:
         self.max_features = max_features
         self.root = None
     def _gini(self, y):
-        classes, counts = np.unique(y, return_counts=True)
+        _, counts = np.unique(y, return_counts=True)
         probs = counts / counts.sum()
         return 1 - np.sum(probs ** 2)
     def _split(self, X, y, feature, threshold):
@@ -28,7 +28,7 @@ class DecisionTree:
         best_gini = float("inf")
         best_feature, best_threshold = None, None
 
-        n_samples, n_features = X.shape
+        _, n_features = X.shape
 
         features = np.random.choice(
             n_features,
